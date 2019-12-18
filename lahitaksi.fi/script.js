@@ -11,7 +11,7 @@ function updateValue (e) {console.log('was here');
     let sopivat = "" 
     let haettu=e.target.value.toUpperCase()
     console.log(haettu)
-    if (haettu.length>1){
+    //if (haettu.length>1){
             for(b in koodit){//console.log(koodit[b])
                     if (koodit[b].toUpperCase().search(haettu)>-1) {
                         sopivat='<h1>'+sopivat+koodit[b]+'</ha>'+'<br>'
@@ -19,7 +19,7 @@ function updateValue (e) {console.log('was here');
                 } 
                 console.log(sopivat)
                 alueet.innerHTML=sopivat
-        }
+      //  }
     }
 
 painoit = () => {console.log('jee')}
