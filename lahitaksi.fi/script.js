@@ -32,4 +32,6 @@ function teeValit() {b="";for (i in HEL) {
     if (vertaa) {b=b+' '+HEL[i]} else {b=b+HEL[i]}}
     console.log(b)}
 
+function tolpat () {document.getElementById("alueet").innerHTML=helTol}
+
 //jflsjfl
