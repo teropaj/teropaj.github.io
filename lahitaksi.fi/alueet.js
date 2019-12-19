@@ -5,4 +5,4 @@ HEL="1111Kaivopuisto*1121Kaartinkaupunki*1122Espanpuisto*1131Katajanokka*1141Kru
 helTol="1Kapteeninkatu*11Ruoholahti_metro*2Eteläranta*13Itälahdenkatu*3Viiskulma*15Lauttasaarentie*4Hotel_Kämp*41Museokatu*5Uudenmaakatu*43Mehiläinen*6Aleksanterinkatu*45Töölöntori*7Hietalahdentori*47Crowne_Plaza*8Hotel_Grand_Marina*49Scandic_Park*9Viking_Terminaali*51Messeniuksenkatu*10Meriasema*53Töölöntulli*12Mariankatu*55Meilahden_sairaala1*4Rautatientori*57Ruskeasuo*17Hotel_Klaus_K*61Lehtisaari*19Hotel_Seaside*63Hotel_Kalastajatorppa*21Erottaja*65Munkkiniemi*23Hotel_Marski*67Munkkivuor*i25Lapinlahdenkatu*71Pitäjänmäki*27Elielinaukio*73Konala*31Hotel_Presidentti*75Maistraatinportti*33Rautatiekatu*76Melkinlaituri*35Linja-autoasema*77Ilmalantori*37Asema-aukio*79Hartwall_Arena*39Hotel_Plaza*81Etelä-Haaga*59Hotel_Royal*83Pohjois-Haaga69Hotel_Katajanokka*84Länsiterminaali*72Hernesaarenranta*85Lassila*89Makasiiniterminaali*86Hotel_Clarion*91Klippanin_laituri*87Kannelmäki*95Kampin_metro*88Malminkartano*96Simonkenttä*92Toivonkatu*97Kaari"
 HEL=HEL+helTol
 
-function tolpat () {document.getElementById("alueet").innerHTML=helTol}
+helTolpatArr=helTol.split('*')

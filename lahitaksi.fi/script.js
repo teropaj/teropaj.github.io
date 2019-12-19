@@ -32,6 +32,14 @@ function teeValit() {b="";for (i in HEL) {
     if (vertaa) {b=b+' '+HEL[i]} else {b=b+HEL[i]}}
     console.log(b)}
 
-function tolpat () {document.getElementById("alueet").innerHTML=helTol}
+function tolpat () {
+    let lista='<h1>'
+    for (tolppa in helTolpatArr) {
+        lista+=helTolpatArr[tolppa]+'<br>'
+    }
+    lista+='<br>'
+    
+    document.getElementById("alueet").innerHTML=lista
+}
 
 //jflsjfl
