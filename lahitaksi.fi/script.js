@@ -114,24 +114,31 @@ function la2 (arr) {
     let i=0,output=[],helper=''
     while (i<arr.length){
         merkki=arr[i]
-         //if (merkki=='6') debugger
+         if (i==1 && helper.length==0) debugger
         //helper+=arr[i]
         if(i>2 && isNumber(merkki)==true) {
-            //console.log('numero')
+            //console.log('numero');debugger
             if (helper.length>2)
                 { //console.log(helper)
-                    output.push(helper);}
-            
-            helper=merkki
+                    if (i==1 && helper.length==0) debugger
+                    //console.log('push helper ',helper)
+                    output.push(helper);
+                    helper=''
+                }
+             
+            //helper=merkki
+            //console.log('i ',i, ' helper ',helper,'merkki ',merkki)
         }
         //console.log('i ',i)
         helper+=merkki
+        
         //console.log(helper)
         if (isNumber(merkki) &&!isNumber(arr[i+1])) {
             //console.log(helper)
             helper+=" ";
             //console.log('helper ',helper)
         }
+        //console.log('helper kierros ',helper)
         i++
         //console.log(arr.length)
     }
