@@ -1,23 +1,24 @@
  
-koodit=HEL.split('*')
+koodit=la2(hel)
 input =document.querySelector('input')
 input.addEventListener('input', updateValue);
+tolppaArr=[]
 
 
-console.log('was here')
+ 
 
-function updateValue (e) {console.log('was here');
-    console.log('was here')
+function updateValue (e) { 
+     
     let sopivat = "" 
     let haettu=e.target.value.toUpperCase()
-    console.log(haettu)
+    //console.log(haettu)
     //if (haettu.length>1){
             for(b in koodit){//console.log(koodit[b])
                     if (koodit[b].toUpperCase().search(haettu)>-1) {
                         sopivat='<h1>'+sopivat+koodit[b]+'</ha>'+'<br>'
                     }
                 } 
-                console.log(sopivat)
+                 
                 alueet.innerHTML=sopivat
       //  }
     }
@@ -40,6 +41,102 @@ function tolpat () {
     lista+='<br>'
     
     document.getElementById("alueet").innerHTML=lista
+}
+
+function isNumber(char) {
+    if (char==" ") return false
+    return !isNaN(char * 1)}
+
+function tahtiValiin (strings) {
+
+     
+
+    let output="",i=0,numerot=''
+     
+    while (i <= strings.length){
+        character = strings.charAt(i);
+        if (character==" ") output+=" "
+        else {
+            if (isNumber(character)){
+                //console.log('i ',i)
+                if(!isNumber(strings.charAt(i+1))) {let helper= 'joo'+'!!'+character
+                //console.log(helper,i)
+                 
+                //helper+=strings.charAt(i+1);
+                //debugger
+                //console.log(helper)
+                output+=helper
+                //i++
+                //if (output[0]=="4") debugger
+                //console.log(output)
+            }
+                //character is numeric');
+                // if (isNaN(strings.charAt(i+1)*1)) {
+                //     output+= +character
+                     
+                // }
+                else {output+=character}
+
+            }else{
+                console.log('ei ollu numero ')
+                output+=character
+                if (output[0]=="4") debugger
+                //console.log('output ',output)
+            }
+        }
+        if (isNumber(character) && !isNumber(strings.charAt(i+1))) output+=" "
+        //console.log('i ',i,'output ',output)
+        i++;
+        console.log('i ',i,'output ',output)
+        //if (output[0]=="4") debugger
+    }
+    return output
+}
+
+function listaaArray (arr) {
+   let  output = [],tolpp=""
+   for (i=1 ;i<arr.length;i++) {
+       let helper=arr[i-1]
+    if (isNumber(helper) && i>2)  {//console.log('number is true')
+        //tolpp+=helper+" "
+        output.push(tolpp+helper);
+        tolpp+=helper+" "
+        tolpp=''
+    }
+    else {tolpp+=helper}
+    
+
+   }
+   output.push(tolpp)
+   return output
+}
+function la2 (arr) {
+    let i=0,output=[],helper=''
+    while (i<arr.length){
+        merkki=arr[i]
+         //if (merkki=='6') debugger
+        //helper+=arr[i]
+        if(i>2 && isNumber(merkki)==true) {
+            //console.log('numero')
+            if (helper.length>2)
+                { //console.log(helper)
+                    output.push(helper);}
+            
+            helper=merkki
+        }
+        //console.log('i ',i)
+        helper+=merkki
+        //console.log(helper)
+        if (isNumber(merkki) &&!isNumber(arr[i+1])) {
+            //console.log(helper)
+            helper+=" ";
+            //console.log('helper ',helper)
+        }
+        i++
+        //console.log(arr.length)
+    }
+    output.push(helper)
+    return output
 }
 
 //jflsjfl
