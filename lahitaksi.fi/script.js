@@ -1,5 +1,8 @@
  
-koodit=la2(hel)
+//raakaAlueet=hel+helAlueet
+//koodit=la2(raakaAlueet)//+la2(helAlueet)
+koodit=tahdita(hel)+tahdita(van)+tahdita(esp)+tahdita(helAlueet)
+koodit=koodit.split('*')
 input =document.querySelector('input')
 input.addEventListener('input', updateValue);
 tolppaArr=[]
@@ -120,7 +123,7 @@ function la2 (arr) {
             //console.log('numero');debugger
             if (helper.length>2)
                 { //console.log(helper)
-                    if (i==1 && helper.length==0) debugger
+                    //if (i==1 && helper.length==0) debugger
                     //console.log('push helper ',helper)
                     output.push(helper);
                     helper=''
@@ -144,6 +147,20 @@ function la2 (arr) {
     }
     output.push(helper)
     return output
+}
+function tahdita (kki) {
+    let newKki =''
+    for (letter=0;letter<kki.length;letter++) {
+        if (!isNumber(kki[letter]) && isNumber(kki[letter-1])) {
+            newKki+=' ' 
+        }
+        if (isNumber(kki[letter]) && !isNumber(kki[letter-1])) {
+            newKki+='*'+kki[letter]
+        }
+        else {newKki+=kki[letter]}
+         
+    }
+    return newKki
 }
 
 //jflsjfl
