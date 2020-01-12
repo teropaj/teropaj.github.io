@@ -2,7 +2,9 @@
 //raakaAlueet=hel+helAlueet
 //koodit=la2(raakaAlueet)//+la2(helAlueet)
 koodit=tahdita(hel)+tahdita(van)+tahdita(esp)+tahdita(helAlueet)
+ 
 koodit=koodit.split('*')
+koodit.shift() 
 input =document.querySelector('input')
 input.addEventListener('input', updateValue);
 tolppaArr=[]
@@ -17,12 +19,18 @@ function updateValue (e) {
     //console.log(haettu)
     //if (haettu.length>1){
             for(b in koodit){//console.log(koodit[b])
+                    // if (isNumber(haettu[0])) {
+                    //     debugger
+                    //     continue
+                    // }
+                    if (koodit[b].indexOf(haettu)==0) { sopivat=koodit[b]+'<br>';break  }
                     if (koodit[b].toUpperCase().search(haettu)>-1) {
-                        sopivat='<h1>'+sopivat+koodit[b]+'</ha>'+'<br>'
+                        sopivat= sopivat+koodit[b]+'<br>'
+                         
                     }
                 } 
-                 
-                alueet.innerHTML=sopivat
+                if(haettu=='') sopivat=''
+                alueet.innerHTML='<h1>'+sopivat+'</h1'
       //  }
     }
 
