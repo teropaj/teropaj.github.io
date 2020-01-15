@@ -1,16 +1,13 @@
  
 //raakaAlueet=hel+helAlueet
 //koodit=la2(raakaAlueet)//+la2(helAlueet)
-koodit=tahdita(hel)+tahdita(van)+tahdita(esp)+tahdita(helAlueet)
+koodit=tahdita(hel)+tahdita(van)+tahdita(esp)+tahdita(helAlueet)+tahdita(muutAlueet)
  
 koodit=koodit.split('*')
 koodit.shift() 
 input =document.querySelector('input')
 input.addEventListener('input', updateValue);
 tolppaArr=[]
-
-
- 
 
 function updateValue (e) { 
      
@@ -23,7 +20,7 @@ function updateValue (e) {
                     //     debugger
                     //     continue
                     // }
-                    if (koodit[b].indexOf(haettu)==0) { sopivat=koodit[b]+'<br>';break  }
+                    if (koodit[b].indexOf(haettu)==0) { sopivat+=koodit[b]+'<br>';   }
                     if (koodit[b].toUpperCase().search(haettu)>-1) {
                         sopivat= sopivat+koodit[b]+'<br>'
                          
