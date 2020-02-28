@@ -10,6 +10,9 @@ document.getElementById('nextWord').addEventListener("click", nextWord)
 
 //show word
 document.getElementById('showWord').addEventListener("click", showWord)
+
+document.getElementById('delete').addEventListener("click", deleteWord)
+
 function logSubmit (event)
     {    
         console.log(event)
@@ -31,3 +34,8 @@ function showWord() {
     setTimeout(()=> document.getElementById('value').innerHTML="",
     2000) 
 }
+
+function deleteWord() {
+    localStorage.removeItem(Object.keys(localStorage)[wordItem])
+}
+
