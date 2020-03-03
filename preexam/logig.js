@@ -1,4 +1,5 @@
-let wordItem=0
+let wordItem=0,deleteCounter=3
+
 
 //document.getElementById('words').innerHTML=localStorage.getItem(Object.keys(localStorage)[wordItem])
 document.getElementById('words').innerHTML=Object.keys(localStorage)[wordItem] 
@@ -16,10 +17,12 @@ document.getElementById('delete').addEventListener("click", deleteWord)
 function logSubmit (event)
     {    
         console.log(event)
-        debugger
+        //debugger
         localStorage.setItem(event.target[0].value, event.target[1].value) 
         event.preventDefault();
         //console.log(localStorage.event.target[0])
+        document.getElementById('firstWord').value=""
+        document.getElementById('valueWord').value=""
     }
 
 function nextWord() {
@@ -36,6 +39,14 @@ function showWord() {
 }
 
 function deleteWord() {
-    localStorage.removeItem(Object.keys(localStorage)[wordItem])
+    deleteCounter--;
+    if (deleteCounter===2) {
+        console.log('deleteCounter: ',deleteCounter)
+        setTimeout(()=>{document.getElementById('delete').innerHTML="delete";
+        deleteCounter=3},   3000)
+    }
+    document.getElementById('delete').innerHTML=deleteCounter
+    if(deleteCounter=== 0) {localStorage.removeItem(Object.keys(localStorage)[wordItem])
+    document.getElementById('delete').innerHTML="delete"}
 }
 
