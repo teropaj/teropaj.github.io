@@ -14,10 +14,22 @@ document.getElementById('showWord').addEventListener("click", showWord)
 
 document.getElementById('delete').addEventListener("click", deleteWord)
 
+if (localStorage.length===0) {
+    target=
+            {target:[
+                {value:'pollen'},
+                {value:'siitepöly'}
+            ]
+        }
+        document.getElementById('words').innerHTML=target.target[0].value
+        logSubmit(target)
+    
+}
+
 function logSubmit (event)
     {    
         console.log(event)
-        //debugger
+        debugger
         localStorage.setItem(event.target[0].value, event.target[1].value) 
         event.preventDefault();
         //console.log(localStorage.event.target[0])
