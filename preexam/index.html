@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="app.css">
     <style>
          p {
           font-size: 5vh;
@@ -14,23 +15,30 @@
         button {
           font-size: 5vh;
         }
+        div.hidden {
+          display: none;
+        }
         </style>
 </head>
 <body>
-    <form id="addWord">
+    <div class="hidden modal" style="width: 70%;" id="add">
+      <span class="close" onclick="closeAdd()">&times;</span>
+      <form id="addWord"  ">
         <input id="firstWord">
         <input id="valueWord"> 
         <button type="submit">Add</button>
+    </div>
+     
 
     </form>
      
-    <div  >
-        <p id="words"></p>
+    <div id="menu" >
+        <p style="background-color: rgb(94, 94, 117);width:20%" id="words"></p>
         <p id="value"></p>
-        <div style="margin-left: 6rem;">
+        <div style="margin-left: 6rem;float:right">
           <button style="margin-left: 6rem;" id="showWord">Show word</button>
           <!--button id="hideWord">Hide word</button-->
-           
+          <button onclick="addWords()" style="margin-left: 6rem;">add</button>
           <button style="margin-left: 6rem;" id="delete">Delete</button>
           <button style="margin-left: 6rem;" id="nextWord">Next</button>
         </div>
