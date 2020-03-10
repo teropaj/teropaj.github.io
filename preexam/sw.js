@@ -2,7 +2,8 @@ const staticCacheName = 'site-static';
 const assets = [
   '/',
   '/index.html',
-  '/logig.js' 
+  '/logig.js',
+  '/app.css' 
 ];
 
 // install event
