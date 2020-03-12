@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="app.css">
     <style>
          p {
-          font-size: 5vh;
+          font-size: 8vh;
         }
         input {
           font-size: 5vh;
@@ -21,7 +21,7 @@
         </style>
 </head>
 <body>
-    <div class="hidden modal" style="width: 70%;" id="add">
+    <div class="hidden modal" style="width: 100%;" id="add">
       <span class="close" onclick="closeAdd()">&times;</span>
       <form id="addWord"  ">
         <input id="firstWord">
@@ -33,12 +33,13 @@
     </form>
      
     <div id="menu" >
-        <p style="background-color: rgb(94, 94, 117);width:20%" id="words"></p>
-        <p id="value"></p>
+        <p style="background-color: rgb(94, 94, 117);text-align: center;  " id="words"></p>
+        <p style="text-align: center;" id="value"></p>
         <div style="margin-left: 6rem;float:right">
           <button style="margin-left: 6rem;" id="showWord">Show word</button>
           <!--button id="hideWord">Hide word</button-->
           <button onclick="addWords()" style="margin-left: 6rem;">add</button>
+          <button onclick="archive()"  style="margin-left: 6rem;">archive</button>
           <button style="margin-left: 6rem;" id="delete">Delete</button>
           <button style="margin-left: 6rem;" id="nextWord">Next</button>
         </div>

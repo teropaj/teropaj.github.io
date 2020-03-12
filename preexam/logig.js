@@ -1,4 +1,4 @@
-let wordItem=0,deleteCounter=3
+let wordItem=0,deleteCounter=3,showArchive=false
 
 
 //document.getElementById('words').innerHTML=localStorage.getItem(Object.keys(localStorage)[wordItem])
@@ -41,11 +41,22 @@ function logSubmit (event)
 
 function nextWord() {
     (wordItem<localStorage.length-1) ? wordItem++ : wordItem=0
+    if (Object.keys(localStorage)[wordItem][0]!="!" && showArchive===false){
     document.getElementById('words').innerHTML=Object.keys(localStorage)[wordItem] 
-     
+    
     idWords.classList.add('animate-in');
     setInterval(()=>idWords.classList.remove('animate-in')
     , 1000)
+    }
+    else {
+    //   document.getElementById('words').innerHTML=Object.keys(localStorage)[wordItem] 
+    
+    // idWords.classList.add('animate-in');
+    // setInterval(()=>idWords.classList.remove('animate-in')
+    // , 1000)
+    // wordItem++
+     nextWord()
+    }
 }
 
 function showWord() {
@@ -119,4 +130,10 @@ function animate() {
     document.querySelector('#add').classList.add('hidden')
     document.querySelector('#menu').classList.remove('hidden')
   }
-
+  function archive () {
+     
+    localStorage.setItem("!"+Object.keys(localStorage)[wordItem],
+    localStorage.getItem(Object.keys(localStorage)[wordItem]))
+    localStorage.removeItem(Object.keys(localStorage)[wordItem])
+    
+  }
