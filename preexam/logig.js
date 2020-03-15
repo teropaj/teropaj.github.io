@@ -1,6 +1,12 @@
 let wordItem=0,deleteCounter=3,showArchive=false
+let examsList=document.getElementById('examsList')
+
+ 
+
+//for (button of classButtons) {debugger}
 
 
+if (localStorage.getItem('displayClass')===null) {localStorage.displayClass= "current"}
 //document.getElementById('words').innerHTML=localStorage.getItem(Object.keys(localStorage)[wordItem])
 document.getElementById('words').innerHTML=Object.keys(localStorage)[wordItem] 
 function addWord (word,value) { localStorage.setItem(word,value)}
@@ -136,4 +142,34 @@ function animate() {
     localStorage.getItem(Object.keys(localStorage)[wordItem]))
     localStorage.removeItem(Object.keys(localStorage)[wordItem])
     
+
   }
+  function addExam(item) {
+    list= document.getElementById('examsList')
+    var btn = document.createElement('button');
+    btn.innerHTML=item
+    list.appendChild(btn)
+     
+     function test(){console.log('jee')} 
+    
+    //debugger
+
+  }
+  addExam('current')
+  addExam('archive')
+
+  let currentClass=localStorage.displayClass
+  let classButtons=document.querySelectorAll('div#examsList button')
+  examsList.addEventListener('click',function(e){console.log(e.target.innerHTML);
+    
+    for (let butt of examsList.children){ console.log(butt) 
+    butt.disabled=false}
+  
+    e.target.disabled=true
+  
+  }
+  )
+
+  for (butt of classButtons) {if(butt.innerHTML===currentClass){
+    butt.disabled=true
+  }}
