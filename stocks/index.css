@@ -20,3 +20,9 @@ table, th, td {
  th {
    height: 50px;
  }
+ .close {
+  /* color: #ccc; */
+  float: right;
+  font-size: 30px;
+  /* color: #fff; */
+}

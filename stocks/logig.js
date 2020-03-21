@@ -83,6 +83,10 @@ function myFunction(e) {
     document.getElementById('idLisaa').style.display="block"
   }
 
+  function closeAdd () {
+    document.getElementById('idLisaa').style.display="none"
+  }
+
 
   // if (localStorage.length>0)  { 
   //   for (let oosake=0;oosake<localStorage.length-1;oosake++)
