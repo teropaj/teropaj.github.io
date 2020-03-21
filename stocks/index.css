@@ -1,0 +1,22 @@
+li {display:inline}
+
+html *
+{
+   font-size: 5vh !important;
+   color: #000 !important;
+   font-family: Arial !important;
+}
+p {margin: 2px 0px}
+
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+  }
+  table {
+   border-collapse: collapse;
+   width: 100%;
+ }
+ 
+ th {
+   height: 50px;
+ }
