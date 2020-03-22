@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+  <link rel="stylesheet" href="index.css">
+<body>
+  <div style="position: relative;"> 
+  <table id="idTable" style="width: 50%; margin:auto"> 
+    
+    <th   >Osake</th>
+    <th >Määrä</th>
+     
+    <th >Ostohinta</th>
+    <th  >Ostoaika</th>
+    <th  >Kurssi</th>
+  </tr>
+  <tr>
+    <td>Jill</td>
+    <td>Smith</td>
+    <td>50</td>
+    <td>50</td>
+    <td>50</td>
+  </tr>
+</table>
+<button onclick="lisaaOsake()">Lisää</button>
+   
+
+ 
+  
+
+ 
+<div id="idLisaa" style="width:50%;position:absolute;padding:1%;border: 1px solid red;background-color: blue;
+margin:auto;display:none;">
+<span class="close" onclick="closeAdd()">&times;</span>
+  <form  id="idForm"  style="border:auto">
+    Osake: <input type="text" name="fname"> <br>
+    Määrä: <input type="text" name="fname2"><br>
+    Ostohinta: <input type="text" name="fname3"><br>
+    Ostoaika: <input type="text" name="fname4"><br>
+    Kurssi: <input type="text" name="fname5">
+    <input type="submit" value="Submit">
+  </form>
+</div>
+</div> 
+<script src="logig.js">
+ 
+</script>
+
+<!-- Code injected by live-server -->
+<script type="text/javascript">
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	// ]]>
+</script></body>
+</html>

@@ -2,7 +2,7 @@ li {display:inline}
 
 html *
 {
-   font-size: 5vh !important;
+   font-size: 5vw !important;
    color: #000 !important;
    font-family: Arial !important;
 }
