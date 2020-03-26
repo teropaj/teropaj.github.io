@@ -36,7 +36,9 @@ function myFunction(e) {
       //let helper=JSON.parse(localStorage.getItem(osake))
       let helper=Object.keys(localStorage)[osake]
       //debugger
-      let rivi=localStorage.getItem(helper)
+
+      let rivi=JSON.parse(localStorage.getItem(helper))
+      //debugger
       console.log(localStorage.getItem(helper))
       idListaChild=document.createElement('tr')
       tdChild1=document.createElement('td')
@@ -44,11 +46,13 @@ function myFunction(e) {
       tdChild3=document.createElement('td')
       tdChild4=document.createElement('td')
       tdChild5=document.createElement('td')
-      tdChild1.innerHTML=JSON.parse(rivi)[0].maara
-      tdChild2.innerHTML=JSON.parse(rivi)[0].maara
-      tdChild3.innerHTML=JSON.parse(rivi)[0].maara
-      tdChild4.innerHTML=JSON.parse(rivi)[0].maara
-      tdChild5.innerHTML=JSON.parse(rivi)[0].maara
+      //debugger
+      tdChild1.innerHTML=helper
+      tdChild2.innerHTML=rivi[0].maara
+      tdChild3.innerHTML=rivi[1].ostohinta
+      tdChild4.innerHTML=rivi[2].ostoaika
+      tdChild5.innerHTML=rivi[3].kurssi
+
 
              
       idListaChild.appendChild(tdChild1)
