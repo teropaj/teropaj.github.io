@@ -54,8 +54,8 @@ function myFunction(e) {
       tdChild3.innerHTML=rivi[1].ostohinta
       tdChild4.innerHTML=rivi[2].ostoaika
       tdChild5.innerHTML=rivi[3].kurssi
-      let voitto=(rivi[0].maara*rivi[3].kurssi) -
-                  (rivi[0].maara*rivi[1].ostohinta) 
+      let voitto=((rivi[0].maara*rivi[3].kurssi) -
+                  (rivi[0].maara*rivi[1].ostohinta)).toFixed(2)
       
                   tdChild6.style.backgroundColor= (voitto>0) ? 'green' : 'red' 
                   //debugger
@@ -96,11 +96,15 @@ function myFunction(e) {
 
   function taulukkoClick (e){
     //console.log(e.target.innerHTML)
-
+    
     console.log(e.target.parentElement.cells[0].innerHTML)
     if (e.target.innerHTML==='e') {console.log('oli e');
-    edit(localStorage.getItem(e.target.parentElement.cells[0].innerHTML,
-      e.target.parentElement.cells[0].innerHTML))}
+    //debugger
+    console.log('display ',document.getElementById('idLisaa').style.display)
+    document.getElementById('idLisaa').style.display="block"
+    //debugger
+    //debugger
+    edit(e.target.parentElement.cells[0].innerHTML)}
     //debugger
     console.log(e.target.innerHTML)
   }
@@ -113,10 +117,10 @@ function myFunction(e) {
     document.getElementById('idLisaa').style.display="none"
   }
 
-  function edit (e,osake) {
-    console.log('rivi ',e)
+  function edit (osake) {
+     
     //debugger
-    let b=JSON.parse(e)
+    //let b=JSON.parse(e)
     //debugger
     //debugger
     document.getElementsByTagName('input')[0].value=osake
