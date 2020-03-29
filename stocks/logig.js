@@ -46,12 +46,25 @@ function myFunction(e) {
       tdChild3=document.createElement('td')
       tdChild4=document.createElement('td')
       tdChild5=document.createElement('td')
+      tdChild6=document.createElement('td')
+      tdChild7=document.createElement('td')
       //debugger
       tdChild1.innerHTML=helper
       tdChild2.innerHTML=rivi[0].maara
       tdChild3.innerHTML=rivi[1].ostohinta
       tdChild4.innerHTML=rivi[2].ostoaika
       tdChild5.innerHTML=rivi[3].kurssi
+      let voitto=(rivi[0].maara*rivi[3].kurssi) -
+                  (rivi[0].maara*rivi[1].ostohinta) 
+      
+                  tdChild6.style.backgroundColor= (voitto>0) ? 'green' : 'red' 
+                  //debugger
+                  tdChild6.innerHTML=voitto+""
+                   
+
+      //debugger
+      tdChild7.innerHTML="e"
+      
 
 
              
@@ -60,6 +73,9 @@ function myFunction(e) {
       idListaChild.appendChild(tdChild3)
       idListaChild.appendChild(tdChild4)
       idListaChild.appendChild(tdChild5)
+      idListaChild.appendChild(tdChild6)
+      idListaChild.appendChild(tdChild7)
+
 
       idTable.appendChild(idListaChild)
       //debugger
@@ -80,7 +96,13 @@ function myFunction(e) {
 
   function taulukkoClick (e){
     //console.log(e.target.innerHTML)
+
     console.log(e.target.parentElement.cells[0].innerHTML)
+    if (e.target.innerHTML==='e') {console.log('oli e');
+    edit(localStorage.getItem(e.target.parentElement.cells[0].innerHTML,
+      e.target.parentElement.cells[0].innerHTML))}
+    //debugger
+    console.log(e.target.innerHTML)
   }
 
   function lisaaOsake() {
@@ -89,6 +111,21 @@ function myFunction(e) {
 
   function closeAdd () {
     document.getElementById('idLisaa').style.display="none"
+  }
+
+  function edit (e,osake) {
+    console.log('rivi ',e)
+    //debugger
+    let b=JSON.parse(e)
+    //debugger
+    //debugger
+    document.getElementsByTagName('input')[0].value=osake
+    document.getElementsByTagName('input')[1].value=b[0].maara
+    document.getElementsByTagName('input')[2].value=b[1].ostohinta
+    document.getElementsByTagName('input')[3].value=b[2].ostoaika
+    document.getElementsByTagName('input')[4].value=b[3].kurssi
+    //document.getElementsByTagName('input')[5].value='-200'
+
   }
 
 
