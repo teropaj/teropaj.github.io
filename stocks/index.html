@@ -2,6 +2,11 @@
 <html>
   <link rel="stylesheet" href="index.css">
 <body>
+  <div id="salkut">
+    
+     
+    <a href="">Lisää salkku</a>
+  </div>
   <div style="position: relative;"> 
   <table id="idTable" style="width: 50%; margin:auto"> 
     
@@ -38,13 +43,30 @@
 margin:auto;display:none;">
 <span class="close" style="cursor:pointer" onclick="closeAdd()">&times;</span>
   <form  id="idForm"  style="border:auto">
-    Osake: <input type="text" name="fname"> <br>
-    Määrä: <input type="text" name="fname2"><br>
-    Ostohinta: <input type="text" name="fname3"><br>
-    Ostoaika: <input type="text" name="fname4"><br>
+    <label>
+      Osake
+      <input required type="text" name="fname" size="10"><br>
+    </label> 
+    <label> 
+      Määrä:
+      <input type="text" name="fname2" size="10"><br>
+    </label>
+    <label> 
+    Ostohinta:
+     <input required type="text" name="fname3" size="6"><br>
+    </label>
+     
+
+  
+  <label>
+    Ostoaika: <input type="date" name="fname4"><br>
+  </label>
+  <label> 
     Kurssi: <input type="text" name="fname5">
     <input type="submit" value="Submit">
+  </label>
   </form>
+  <button style="display: none;">Poista</button>
 </div>
 
 </div> 
