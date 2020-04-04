@@ -3,10 +3,14 @@
 document.getElementById('idForm').addEventListener('submit',myFunction)
 let idLista=document.getElementById('list')
 //idLista.addEventListener('click',listHandler)
-idTable=document.getElementById('idTable')
-idTable.addEventListener("click",taulukkoClick)
-let salkut=JSON.parse(localStorage.salkut)
-salkkuTht=['osake','määrä','ostohinta','kurssi','+/-','']
+//idTable=document.getElementById('idTable')
+//idTable.addEventListener("click",taulukkoClick)
+let salkut
+if(localStorage.length===0){ 
+  localStorage.setItem('salkut',JSON.stringify(['salkku']))
+}
+ salkut=JSON.parse(localStorage.salkut)
+salkkuTht=['osake','määrä','ostohinta','ostoaika','kurssi','+/-','']
 
 var dateControl = document.querySelector('input[type="date"]');
 dateControl.value = getDate()
@@ -30,9 +34,19 @@ for (let i=0;i<salkut.length;i++) {
   document.getElementById('salkut').appendChild(salkkuObject)
 
   let salkkuDiv=document.createElement('div')
+  let h1=document.createElement('h1')
+  h1.innerHTML=salkut[i]
+  h1.style.textAlign='center'
+  h1.style.backgroundColor='green'
+  h1.style.marginBottom='0px'
+  document.body.appendChild(h1)
+  //debugger
+
   let salkkuTable=document.createElement('table')
   salkkuTable.style.width='70%'
   salkkuTable.style.margin='auto'
+  salkkuTable.id='idTable'
+  
   
   for (let i of salkkuTht) {
   let osake=document.createElement('th')
@@ -46,7 +60,10 @@ for (let i=0;i<salkut.length;i++) {
 
 
 }
-
+idTable=document.getElementById('idTable')
+idTable.addEventListener("click",taulukkoClick)
+// bodyid=document.querySelector('body')
+// bodyid.addEventListener('click',(e)=>{console.log(e);debugger})
 
 function myFunction(event) {
   event.preventDefault()
