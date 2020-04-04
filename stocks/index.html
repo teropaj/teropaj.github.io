@@ -1,15 +1,19 @@
 <!DOCTYPE html>
 <html>
   <link rel="stylesheet" href="index.css">
+
+<meta charset="UTF-8">
+
 <body>
-  <div id="salkut">
-    
-     
-    <a href="">Lisää salkku</a>
-  </div>
+   
+    <div id="salkut" style="justify-content: center;display:flex">
+    </div>
+ 
+   
+  <p onclick="lisaaSalkku ()" style="float:right"  >Lisää salkku</p>
   <div style="position: relative;"> 
   <table id="idTable" style="width: 50%; margin:auto"> 
-    
+    <tr> 
     <th   >Osake</th>
     <th >Määrä</th>
      
@@ -42,34 +46,43 @@
 <div id="idLisaa" style="width:70%; padding:1%;border: 1px solid red;background-color: blue;
 margin:auto;display:none;">
 <span class="close" style="cursor:pointer" onclick="closeAdd()">&times;</span>
-  <form  id="idForm"  style="border:auto">
-    <label>
-      Osake
-      <input required type="text" name="fname" size="10"><br>
-    </label> 
-    <label> 
-      Määrä:
-      <input type="text" name="fname2" size="10"><br>
-    </label>
-    <label> 
-    Ostohinta:
-     <input required type="text" name="fname3" size="6"><br>
-    </label>
+  <form id="idForm"> 
+  <table     style="border:auto">
+    <tr>
+      <td>Osake</td>
+      <td> <input required type="text" name="fname" size="10"></td>
+    </tr> 
+   
+    <tr> 
+      <td>Määrä</td> 
+      <td><input type="text" name="fname2" size="10"></td>
+    </tr>
+   
+    <tr> 
+      <td> Ostohinta:</td>
+      <td><input required type="text" name="fname3" size="6"></td>
+    </tr>
      
 
   
-  <label>
-    Ostoaika: <input type="date" name="fname4"><br>
-  </label>
-  <label> 
-    Kurssi: <input type="text" name="fname5">
-    <input type="submit" value="Submit">
-  </label>
-  </form>
-  <button style="display: none;">Poista</button>
+    <tr>
+      <td>Ostoaika: </td>
+      <td><input type="date" name="fname4"size="6" ></td>
+    </tr>
+    <tr> 
+      <td>Kurssi: </td>
+        <td><input type="text" name="fname5"size="6"></td>
+         
+  </tr>
+
+</table>
+<input type="submit" value="Lisää">
+</form>
+ 
+  <button style="display: none;" id="idForm">Poista</button>
 </div>
 
-</div> 
+  
 <script src="logig.js">
  
 </script>

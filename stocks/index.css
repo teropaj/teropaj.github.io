@@ -2,11 +2,12 @@ li {display:inline}
 
 html *
 {
-   font-size: 4vw !important;
+   font-size: 4vw;
    color: #000 !important;
    font-family: Arial !important;
 }
-p {margin: 2px 0px}
+p {margin: 2px 0px;
+   font-size: 0.5em;}
 
 table, th, td {
     border: 1px solid black;
