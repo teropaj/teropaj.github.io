@@ -5,12 +5,15 @@ let idLista=document.getElementById('list')
 //idLista.addEventListener('click',listHandler)
 //idTable=document.getElementById('idTable')
 //idTable.addEventListener("click",taulukkoClick)
-let salkut
+let salkut, 
+salkkuDiv  //taulukko, helppo display='none'
 if(localStorage.length===0){ 
   localStorage.setItem('salkut',JSON.stringify(['salkku']))
 }
  salkut=JSON.parse(localStorage.salkut)
-salkkuTht=['osake','määrä','ostohinta','ostoaika','kurssi','+/-','']
+salkkuTht=['osake','määrä','ostohinta',
+//'ostoaika',
+'kurssi','+/-','']
 
 var dateControl = document.querySelector('input[type="date"]');
 dateControl.value = getDate()
@@ -33,13 +36,14 @@ for (let i=0;i<salkut.length;i++) {
   //debugger
   document.getElementById('salkut').appendChild(salkkuObject)
 
-  let salkkuDiv=document.createElement('div')
+  salkkuDiv=document.createElement('div')
   let h1=document.createElement('h1')
   h1.innerHTML=salkut[i]
   h1.style.textAlign='center'
-  h1.style.backgroundColor='green'
+  //h1.style.backgroundColor='green'
   h1.style.marginBottom='0px'
-  document.body.appendChild(h1)
+  h1.style.border="1px solid black"
+  salkkuDiv.appendChild(h1)
   //debugger
 
   let salkkuTable=document.createElement('table')
@@ -56,7 +60,8 @@ for (let i=0;i<salkut.length;i++) {
 
    
 
-  document.body.appendChild(salkkuTable)
+  salkkuDiv.appendChild(salkkuTable)
+  document.body.appendChild(salkkuDiv)
 
 
 }
@@ -108,7 +113,7 @@ function myFunction(event) {
       tdChild1=document.createElement('td')
       tdChild2=document.createElement('td')
       tdChild3=document.createElement('td')
-      tdChild4=document.createElement('td')
+      //tdChild4=document.createElement('td')
       tdChild5=document.createElement('td')
       tdChild6=document.createElement('td')
       tdChild7=document.createElement('td')
@@ -116,7 +121,7 @@ function myFunction(event) {
       tdChild1.innerHTML=helper
       tdChild2.innerHTML=rivi[0].maara
       tdChild3.innerHTML=rivi[1].ostohinta
-      tdChild4.innerHTML=rivi[2].ostoaika
+      //tdChild4.innerHTML=rivi[2].ostoaika
       tdChild5.innerHTML=rivi[3].kurssi
       let voitto=((rivi[0].maara*rivi[3].kurssi) -
                   (rivi[0].maara*rivi[1].ostohinta)).toFixed(2)
@@ -135,7 +140,7 @@ function myFunction(event) {
       idListaChild.appendChild(tdChild1)
       idListaChild.appendChild(tdChild2)
       idListaChild.appendChild(tdChild3)
-      idListaChild.appendChild(tdChild4)
+      //dListaChild.appendChild(tdChild4)
       idListaChild.appendChild(tdChild5)
       idListaChild.appendChild(tdChild6)
       idListaChild.appendChild(tdChild7)
@@ -185,6 +190,7 @@ function myFunction(event) {
 
   function edit (osake) {
     document.querySelectorAll('button')[1].style.display="block"
+    salkkuDiv.display="none"
      
     //debugger
     //let b=JSON.parse(e)
