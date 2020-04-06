@@ -40,14 +40,20 @@ for (let i=0;i<salkut.length;i++) {
   let h1=document.createElement('h1')
   h1.innerHTML=salkut[i]
   h1.style.textAlign='center'
+  h1.style.width='12em'
+  h1.style.margin='auto'
   //h1.style.backgroundColor='green'
   h1.style.marginBottom='0px'
-  h1.style.border="1px solid black"
+  //h1.style.border="1px solid black"
+  h1.style.backgroundColor='green'
   salkkuDiv.appendChild(h1)
   //debugger
 
   let salkkuTable=document.createElement('table')
-  salkkuTable.style.width='70%'
+  //if (window.innerWidth>670) {
+  //salkkuTable.style.width='70%'
+ //}
+
   salkkuTable.style.margin='auto'
   salkkuTable.id='idTable'
   
@@ -186,18 +192,19 @@ function myFunction(event) {
 
   function closeAdd () {
     document.getElementById('idLisaa').style.display="none"
+    salkkuDiv.style="block"
   }
 
   function edit (osake) {
     document.querySelectorAll('button')[1].style.display="block"
-    salkkuDiv.display="none"
+    salkkuDiv.style.display="none"
      
     //debugger
     //let b=JSON.parse(e)
     //debugger
     //debugger
     let b=JSON.parse(localStorage.getItem(osake))
-    debugger
+   // debugger
     document.getElementsByTagName('input')[0].value=osake
     document.getElementsByTagName('input')[1].value=b[0].maara
     document.getElementsByTagName('input')[2].value=b[1].ostohinta
