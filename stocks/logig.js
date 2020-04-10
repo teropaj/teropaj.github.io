@@ -1,6 +1,6 @@
  
 
-document.getElementById('idForm').addEventListener('submit',myFunction)
+document.getElementById('idForm').addEventListener('submit',transaktio)
 let idLista=document.getElementById('list')
 //idLista.addEventListener('click',listHandler)
 //idTable=document.getElementById('idTable')
@@ -11,7 +11,7 @@ if(localStorage.length===0){
   localStorage.setItem('salkut',JSON.stringify(['salkku']))
 }
  salkut=JSON.parse(localStorage.salkut)
-salkkuTht=['osake','määrä','ostohinta',
+salkkuTht=[ '','osake','määrä','ostohinta',
 //'ostoaika',
 'kurssi','+/-','']
 
@@ -75,30 +75,8 @@ idTable=document.getElementById('idTable')
 idTable.addEventListener("click",taulukkoClick)
 // bodyid=document.querySelector('body')
 // bodyid.addEventListener('click',(e)=>{console.log(e);debugger})
-
-function myFunction(event) {
-  event.preventDefault()
-    //alert("The form was submitted  ");
-    //Osake
-    console.log(event)
-     
-    let helper=[
-    
-      //Määärä
-      {maara:event.target[1].value},
-      //Ostohinta
-      {ostohinta:event.target[2].value},
-      //Ostoaika
-      {ostoaika:event.target[3].value},
-      //Kurssi
-      {kurssi:event.target[4].value}
-    ]
-    // debugger
-    localStorage.setItem(
-    event.target[0].value,JSON.stringify(helper))
-    document.getElementById('idLisaa').style.display="none"
-    //e.preventDefault();
-  }
+ 
+ 
 
   //listaa osakkeet
 
@@ -116,6 +94,7 @@ function myFunction(event) {
       //debugger
       console.log(localStorage.getItem(helper))
       idListaChild=document.createElement('tr')
+      plusMiinus=document.createElement('td')
       tdChild1=document.createElement('td')
       tdChild2=document.createElement('td')
       tdChild3=document.createElement('td')
@@ -124,6 +103,7 @@ function myFunction(event) {
       tdChild6=document.createElement('td')
       tdChild7=document.createElement('td')
       //debugger
+      plusMiinus.innerHTML='+/-'
       tdChild1.innerHTML=helper
       tdChild2.innerHTML=rivi[0].maara
       tdChild3.innerHTML=rivi[1].ostohinta
@@ -142,7 +122,7 @@ function myFunction(event) {
       
 
 
-             
+      idListaChild.appendChild(plusMiinus)             
       idListaChild.appendChild(tdChild1)
       idListaChild.appendChild(tdChild2)
       idListaChild.appendChild(tdChild3)
@@ -172,18 +152,26 @@ function myFunction(event) {
   function taulukkoClick (e){
     //console.log(e.target.innerHTML)
     
-    console.log(e.target.parentElement.cells[0].innerHTML)
-    if (e.target.innerHTML==='edit') {console.log('oli e');
+    console.log(e.target.parentElement.cells[1].innerHTML)
+    switch (e.target.innerHTML) {
+       case 'edit': console.log('oli edit');
+        //debugger
+        console.log('display ',document.getElementById('idLisaa').style.display)
+        document.getElementById('idLisaa').style.display="block"
+        //debugger
+        //debugger
+        let rivi=Object.keys(localStorage)[e.target.parentElement.cells[0].innerHTML]
+        //debugger
+        edit(e.target.parentElement.cells[1].innerHTML)
+      break
+      case '+/-': console.log('+/-')
+      document.getElementById('idLisaa').style.display="block"
+      edit(e.target.parentElement.cells[1].innerHTML)
+      ;break
+    }
+    
     //debugger
-    console.log('display ',document.getElementById('idLisaa').style.display)
-    document.getElementById('idLisaa').style.display="block"
-    //debugger
-    //debugger
-    let rivi=Object.keys(localStorage)[e.target.parentElement.cells[0].innerHTML]
-    //debugger
-    edit(e.target.parentElement.cells[0].innerHTML)}
-    //debugger
-    console.log(e.target.innerHTML)
+    //console.log(e.target.innerHTML)
   }
 
   function lisaaOsake() {
@@ -230,6 +218,29 @@ function myFunction(event) {
   function lisaaSalkku() {
     document.getElementById('idTable').style.display='none'
   }
+  function transaktio(event) {
+    event.preventDefault()
+      //alert("The form was submitted  ");
+      //Osake
+      console.log(event)
+       
+      let helper=[
+      
+        //Määärä
+        {maara:event.target[1].value},
+        //Ostohinta
+        {ostohinta:event.target[2].value},
+        //Ostoaika
+        {ostoaika:event.target[3].value},
+        //Kurssi
+        {kurssi:event.target[4].value}
+      ]
+      // debugger
+      localStorage.setItem(
+      event.target[0].value,JSON.stringify(helper))
+      document.getElementById('idLisaa').style.display="none"
+      //e.preventDefault();
+    }
 
 
   // if (localStorage.length>0)  { 
