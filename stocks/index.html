@@ -35,7 +35,7 @@
     <td>e</td>
   </tr>
 </table> -->
-<button onclick="lisaaOsake()">Lisää</button>
+ 
 
 
    
@@ -45,11 +45,12 @@
 
  
 <div id="idLisaa" style="  padding:1%;border: 1px solid red;background-color: blue;
-margin:auto;display:none;">
-<span class="close" style="cursor:pointer" onclick="closeAdd()">&times;</span>
+margin:auto;width:70%;display:none;">
+<h1 id="lisaaH1" style="display: none;">Osake</h1>
+<span class="close"   onclick="closeAdd()">&times;</span>
   <form id="idForm"> 
   <table     style="border:auto">
-    <tr>
+    <tr id="osakeTitle">
       <td>Osake</td>
       <td> <input required type="text" name="fname" size="10"></td>
     </tr> 
@@ -77,12 +78,15 @@ margin:auto;display:none;">
   </tr>
 
 </table>
-<input type="submit" value="Lisää">
+<input id="lisaa" type="submit" value="Lisää">
+<input id="osta" type="submit" value="Osta">
+<input id="myy" type="submit" value="Myy">
 </form>
  
   <button style="display: none;" id="idForm">Poista</button>
 </div>
 
+ 
 <div style="display: none;">
   <h1 >Lisää salkku</h1>
   <form id="lisaaSalkku"> 
@@ -91,7 +95,10 @@ margin:auto;display:none;">
 </form>
 </div>
 
-  
+ <div id="osakelista">
+   
+ </div>
+ <!-- <button onclick="lisaaOsake()" id="idLisaaOsake">Lisää</button> -->
 <script src="logig.js">
  
 </script>

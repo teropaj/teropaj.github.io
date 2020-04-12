@@ -2,7 +2,7 @@
   body {
     
     margin:auto;
-    width:80%
+    width:70%
   }
 }
 
@@ -25,15 +25,17 @@ table, th, td {
   table {
    border-collapse: collapse;
    width: 100%;
+   
  }
  
  th {
    height: 50px;
  }
- .close {
+ span.close {
   /* color: #ccc; */
   float: right;
-  font-size: 30px;
+  /*font-size: large;*/
   /* color: #fff; */
+   
 }
 h1 {border: 1px solid black;}

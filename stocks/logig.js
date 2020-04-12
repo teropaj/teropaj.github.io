@@ -2,15 +2,19 @@
 
 document.getElementById('idForm').addEventListener('submit',transaktio)
 let idLista=document.getElementById('list')
+let idOsakelista=document.getElementById('osakelista')
+let idLisaaOsake=document.getElementById('idLisaaOsake')
+let osakeTitle=document.getElementById('osakeTitle')
 //idLista.addEventListener('click',listHandler)
 //idTable=document.getElementById('idTable')
 //idTable.addEventListener("click",taulukkoClick)
 let salkut, 
 salkkuDiv  //taulukko, helppo display='none'
 if(localStorage.length===0){ 
-  localStorage.setItem('salkut',JSON.stringify(['salkku']))
+  localStorage.setItem('salkut',JSON.stringify([{salkku:true}]))
 }
  salkut=JSON.parse(localStorage.salkut)
+ 
 salkkuTht=[ '','osake','määrä','ostohinta',
 //'ostoaika',
 'kurssi','+/-','']
@@ -22,7 +26,8 @@ dateControl.value = getDate()
 for (let i=0;i<salkut.length;i++) {
   let salkku=salkut[i]
   let salkkuObject=document.createElement('p')
-  salkkuObject.innerHTML=salkut[i]
+  //debugger
+  salkkuObject.innerHTML=Object.keys(salkut[i])[i]
   salkkuObject.style.backgroundColor='blue'
   salkkuObject.style.marginRight='1em'
   salkkuObject.style.fontSize='1em'
@@ -38,7 +43,8 @@ for (let i=0;i<salkut.length;i++) {
 
   salkkuDiv=document.createElement('div')
   let h1=document.createElement('h1')
-  h1.innerHTML=salkut[i]
+  h1.innerHTML=Object.keys(salkku)
+  
   h1.style.textAlign='center'
   h1.style.width='12em'
   h1.style.margin='auto'
@@ -46,6 +52,7 @@ for (let i=0;i<salkut.length;i++) {
   h1.style.marginBottom='0px'
   //h1.style.border="1px solid black"
   h1.style.backgroundColor='green'
+
   salkkuDiv.appendChild(h1)
   //debugger
 
@@ -67,7 +74,16 @@ for (let i=0;i<salkut.length;i++) {
    
 
   salkkuDiv.appendChild(salkkuTable)
-  document.body.appendChild(salkkuDiv)
+  lisaaButton=document.createElement('button')
+  lisaaButton.innerHTML='lisää'
+  lisaaButton.addEventListener('click',lisaaOsake)
+
+//<button onclick="lisaaOsake()" id="idLisaaOsake">Lisää</button>
+
+
+  salkkuDiv.appendChild(lisaaButton)
+
+  idOsakelista.appendChild(salkkuDiv)
 
 
 }
@@ -151,11 +167,14 @@ idTable.addEventListener("click",taulukkoClick)
 
   function taulukkoClick (e){
     //console.log(e.target.innerHTML)
-    
+    idOsakelista.style.display='none'
     console.log(e.target.parentElement.cells[1].innerHTML)
     switch (e.target.innerHTML) {
        case 'edit': console.log('oli edit');
-        //debugger
+       //console.log(idLisaaOsake.style.display)
+        
+        
+        
         console.log('display ',document.getElementById('idLisaa').style.display)
         document.getElementById('idLisaa').style.display="block"
         //debugger
@@ -165,7 +184,10 @@ idTable.addEventListener("click",taulukkoClick)
         edit(e.target.parentElement.cells[1].innerHTML)
       break
       case '+/-': console.log('+/-')
+      //idLisaaOsake.style.display='none'
+      document.getElementById('lisaa').style.display="none"
       document.getElementById('idLisaa').style.display="block"
+      //idLisaaOsake.style.display="block"
       edit(e.target.parentElement.cells[1].innerHTML)
       ;break
     }
@@ -175,12 +197,17 @@ idTable.addEventListener("click",taulukkoClick)
   }
 
   function lisaaOsake() {
+    document.getElementById('osta').style.display="none"
+    document.getElementById('myy').style.display="none"
+    document.getElementById('lisaa').style.display="block"
+    salkkuDiv.style.display="none"
     document.getElementById('idLisaa').style.display="block"
   }
 
   function closeAdd () {
     document.getElementById('idLisaa').style.display="none"
     salkkuDiv.style="block"
+    idOsakelista.style.display="block"
   }
 
   function edit (osake) {
@@ -236,10 +263,25 @@ idTable.addEventListener("click",taulukkoClick)
         {kurssi:event.target[4].value}
       ]
       // debugger
-      localStorage.setItem(
-      event.target[0].value,JSON.stringify(helper))
+
+      tallenna (event,helper)
+      // localStorage.setItem(
+      //     event.target[0].value,
+      //     JSON.stringify(helper)
+      // )
       document.getElementById('idLisaa').style.display="none"
       //e.preventDefault();
+    }
+
+    function tallenna (event, helper) {
+
+      localStorage.setItem(
+        event.target[0].value,
+        JSON.stringify(helper)
+    )
+
+
+
     }
 
 
