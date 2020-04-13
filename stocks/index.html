@@ -44,43 +44,46 @@
   
 
  
-<div id="idLisaa" style="  padding:1%;border: 1px solid red;background-color: blue;
+<div id="idLisaaOsake" style="  padding:1%;border: 1px solid red;background-color: blue;
 margin:auto;width:70%;display:none;">
-<h1 id="lisaaH1" style="display: none;">Osake</h1>
 <span class="close"   onclick="closeAdd()">&times;</span>
+<h1 id="lisaaH1" style="text-align:center;margin:auto;display: none;border: none;justify-content: center;">Osake</h1>
+ 
   <form id="idForm"> 
   <table     style="border:auto">
     <tr id="osakeTitle">
       <td>Osake</td>
-      <td> <input required type="text" name="fname" size="10"></td>
+      <td> <input id="idOsake" required type="text" name="fname" size="10"></td>
     </tr> 
    
     <tr> 
       <td>Määrä</td> 
-      <td><input type="text" name="fname2" size="10"></td>
+      <td><input id="maara" type="text" name="fname2" size="10"></td>
     </tr>
    
     <tr> 
       <td> Ostohinta:</td>
-      <td><input required type="text" name="fname3" size="6"></td>
+      <td><input required id="ostohinta" type="text" name="fname3" size="6"></td>
     </tr>
      
 
   
     <tr>
       <td>Ostoaika: </td>
-      <td><input type="date" name="fname4"size="6" ></td>
+      <td><input id="ostoaika" type="date" name="fname4"size="6" ></td>
     </tr>
     <tr> 
       <td>Kurssi: </td>
-        <td><input type="text" name="fname5"size="6"></td>
+        <td><input id="kurssi" type="text" name="fname5"size="6"></td>
          
   </tr>
 
 </table>
-<input id="lisaa" type="submit" value="Lisää">
-<input id="osta" type="submit" value="Osta">
-<input id="myy" type="submit" value="Myy">
+<button id="lisaaButton" >Lisää osake</button>
+<div style="display: flex;">
+    <button id="osta" style="display: inline-block;"  >Osta</button>
+    <button id="myy" style="display: inline-block;">Myy</button>
+</div>
 </form>
  
   <button style="display: none;" id="idForm">Poista</button>
