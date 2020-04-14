@@ -7,6 +7,7 @@ let idOsakelista=document.getElementById('osakelista')
 let idLisaaOsake=document.getElementById('idLisaaOsake')
 let osakeTitle=document.getElementById('osakeTitle')
 let maara=document.getElementById('maara')
+
 let ostohinta=document.getElementById('ostohinta')
 let ostoaika=document.getElementById('ostoaika')
 let kurssi=document.getElementById('kurssi')
@@ -18,8 +19,9 @@ document.getElementById('osta').addEventListener('click',ostaf)
 //idLista.addEventListener('click',listHandler)
 //idTable=document.getElementById('idTable')
 //idTable.addEventListener("click",taulukkoClick)
-let salkut, 
-salkkuDiv  //taulukko, helppo display='none'
+let salkut, salkkuDiv  //taulukko, helppo display='none'
+
+
 if(localStorage.length===0){ 
   localStorage.setItem('salkut',JSON.stringify([{salkku:true}]))
 }
@@ -120,17 +122,65 @@ idTable.addEventListener("click",taulukkoClick)
 
       let maaraYhteensa=0
       let ostoYhteensa=0
+
+      let ostotArray = []
+      let ostotTr = []
+
+      idListaChild=document.createElement('tr')
+      idTable.appendChild(idListaChild) 
+      
       for (let i of rivi) {
+        let ostoRivi=document.createElement('tr')
+        ostoRivi.classList.add('hide')
+        ostoRivi.setAttribute('company',helper)
+        for (let j in salkkuTht) {console.log(i)
+          let th=document.createElement('td')
+           
+          switch(Number(j)){
+            case 0: th.innerHTML="";break
+            case 1: th.innerHTML=helper;break
+            case 2: th.innerHTML=i["maara"];break
+             
+          default: th.innerHTML="joo"
+          }
+
+
+
+
+
+
+
+          
+          ostoRivi.appendChild(th)
+          ostotTr.push(ostoRivi)
+          idTable.appendChild(ostoRivi)
+        }
+
         let maara=0
+
         ostoYhteensa+=Number(i.maara)*Number(i.ostohinta)
         maaraYhteensa+=Number(i.maara)
-        console.log(i,Number(maaraYhteensa))
-      };
+        console.log(`Ostot yhteensä ${ostoYhteensa} maaraYhteensa ${maaraYhteensa}`
+        )
+      }
+
+        let keskimaarainenKurssi
+        keskimaarainenKurssi=ostoYhteensa/maaraYhteensa
+
 
 
       //debugger
       console.log(localStorage.getItem(helper))
-      idListaChild=document.createElement('tr')
+      //idListaChild=document.createElement('tr')
+       
+      // let ostotArray = []
+      // for (let i=0;i<5>i++){ 
+      //   let elem=document.createElement('p')
+      //   elem.textContent="joo"
+      //   ostotArray.push() 
+      // }
+
+
       plusMiinus=document.createElement('td')
       tdChild1=document.createElement('td')
       tdChild2=document.createElement('td')
@@ -143,7 +193,7 @@ idTable.addEventListener("click",taulukkoClick)
       plusMiinus.innerHTML='+/-'
       tdChild1.innerHTML=helper
       tdChild2.innerHTML=maaraYhteensa
-      tdChild3.innerHTML=ostoYhteensa.toFixed(2)
+      tdChild3.innerHTML=keskimaarainenKurssi.toFixed(2)
       //tdChild4.innerHTML=rivi[2].ostoaika
       tdChild5.innerHTML=Number(rivi[rivi.length-1].kurssi).toFixed(2)
       let voitto= 
@@ -155,7 +205,8 @@ idTable.addEventListener("click",taulukkoClick)
                    
 
       //debugger
-      tdChild7.innerHTML="edit"
+      tdChild7.innerHTML="kaupat"
+      
       
 
 
@@ -169,7 +220,12 @@ idTable.addEventListener("click",taulukkoClick)
       idListaChild.appendChild(tdChild7)
 
 
-      idTable.appendChild(idListaChild)
+      //idTable.appendChild(idListaChild)  //tr
+      //idTable.idTable.querySelectorAll('tr')[1]
+      //a=idTable.querySelectorAll('tr')[3]
+
+      console.log(ostotTr)
+
       //debugger
       //idListaChild1.textContent=helper
       //debugger
@@ -188,7 +244,7 @@ idTable.addEventListener("click",taulukkoClick)
 
   function taulukkoClick (e){
     //console.log(e.target.innerHTML)
-    idOsakelista.style.display='none'
+    //idOsakelista.style.display='none'
     console.log(e.target.parentElement.cells[1].innerHTML)
     switch (e.target.innerHTML) {
        case 'edit': console.log('oli edit');
@@ -204,9 +260,15 @@ idTable.addEventListener("click",taulukkoClick)
         //debugger
         edit(e.target.parentElement.cells[1].innerHTML)
       break
+      case 'kaupat': console.log('kaupat');
+         let i=document.querySelectorAll('[company="nokia"]')
+         //[0].classList.remove('hide')
+         i.forEach(e=>e.classList.remove('hide'))
+      
+      break
       case '+/-': console.log('+/-')
       //idLisaaOsake.style.display='none'
-      //document.getElementById('lisaa').style.display="none"
+      document.getElementById('lisaaButton').style.display="none"
       idLisaaOsake.style.display="block"
       document.getElementById('osta').style.display="inline-block"
       document.getElementById('myy').style.display="inline-block"
@@ -295,7 +357,7 @@ idTable.addEventListener("click",taulukkoClick)
       // )
       //document.getElementById('lisaa').style.display="none"
       //e.preventDefault();
-      closeAdd()
+      window.location.reload()
     }
 
     function tallenna (event, helper) {
