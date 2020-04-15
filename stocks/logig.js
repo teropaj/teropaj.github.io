@@ -13,6 +13,7 @@ let ostoaika=document.getElementById('ostoaika')
 let kurssi=document.getElementById('kurssi')
 let lisaaH1=document.getElementById('lisaaH1')
 let idOsake=document.getElementById('idOsake')
+const nuoliAlas="&#8595;"
 document.getElementById('osta').addEventListener('click',ostaf)
 
 
@@ -205,7 +206,9 @@ idTable.addEventListener("click",taulukkoClick)
                    
 
       //debugger
-      tdChild7.innerHTML="kaupat"
+      //tdChild7.style.font-size="0.7em"
+      tdChild7.innerHTML=(rivi.length>1) ? nuoliAlas : ""
+      tdChild7.style.fontSize="0.5em"
       
       
 
@@ -245,8 +248,11 @@ idTable.addEventListener("click",taulukkoClick)
   function taulukkoClick (e){
     //console.log(e.target.innerHTML)
     //idOsakelista.style.display='none'
-    console.log(e.target.parentElement.cells[1].innerHTML)
-    switch (e.target.innerHTML) {
+    console.log('painettu ',e.target.innerHTML)
+    let pressedButton=e.target.parentElement.cells[1].innerText
+    let kaupat=document.querySelectorAll(`[company=${pressedButton}]`)
+    console.log(pressedButton)
+    switch (e.target.innerText) {
        case 'edit': console.log('oli edit');
        //console.log(idLisaaOsake.style.display)
         
@@ -260,11 +266,15 @@ idTable.addEventListener("click",taulukkoClick)
         //debugger
         edit(e.target.parentElement.cells[1].innerHTML)
       break
-      case 'kaupat': console.log('kaupat');
-         let i=document.querySelectorAll('[company="nokia"]')
+      case "↓": console.log('kaupat');
+          
+          
          //[0].classList.remove('hide')
-         i.forEach(e=>e.classList.remove('hide'))
-      
+         
+          
+         (kaupat[0].classList.length===0) ? kaupat.forEach(e=>e.classList.add('hide')) :
+         kaupat.forEach(e=>e.classList.remove('hide')) 
+          
       break
       case '+/-': console.log('+/-')
       //idLisaaOsake.style.display='none'
