@@ -13,8 +13,11 @@ let ostoaika=document.getElementById('ostoaika')
 let kurssi=document.getElementById('kurssi')
 let lisaaH1=document.getElementById('lisaaH1')
 let idOsake=document.getElementById('idOsake')
-const nuoliAlas="&#8595;"
+const nuoliAlas="⇓"
+const nuoliYlos="⇑"
 document.getElementById('osta').addEventListener('click',ostaf)
+document.getElementById('idLisaaSalkku').addEventListener('click',lisaaSalkku)
+let tdChild7
 
 
 //idLista.addEventListener('click',listHandler)
@@ -28,7 +31,7 @@ if(localStorage.length===0){
 }
  salkut=JSON.parse(localStorage.salkut)
  
-salkkuTht=[ '','osake','määrä','ostohinta',
+salkkuTht=[ '','osake','määrä','ostokurssi',
 //'ostoaika',
 'kurssi','+/-','']
 
@@ -141,8 +144,10 @@ idTable.addEventListener("click",taulukkoClick)
             case 0: th.innerHTML="";break
             case 1: th.innerHTML=helper;break
             case 2: th.innerHTML=i["maara"];break
+            case 3: th.innerHTML=i["ostohinta"]; 
+            break
              
-          default: th.innerHTML="joo"
+          default: th.innerHTML=""
           }
 
 
@@ -202,14 +207,16 @@ idTable.addEventListener("click",taulukkoClick)
                   ostoYhteensa
                   tdChild6.style.backgroundColor= (voitto>0) ? 'green' : 'red' 
                   //debugger
-                  tdChild6.innerHTML=voitto+""
+                  tdChild6.innerHTML=voitto.toFixed(2)+""
                    
 
       //debugger
       //tdChild7.style.font-size="0.7em"
       tdChild7.innerHTML=(rivi.length>1) ? nuoliAlas : ""
       tdChild7.style.fontSize="0.5em"
-      
+      tdChild7.style.width="3em"
+      tdChild7.style.textAlign="center"
+       
       
 
 
@@ -266,16 +273,16 @@ idTable.addEventListener("click",taulukkoClick)
         //debugger
         edit(e.target.parentElement.cells[1].innerHTML)
       break
-      case "↓": console.log('kaupat');
+      case nuoliAlas: console.log('kaupat'); downAup (e.target);break
+      case nuoliYlos: console.log('kaupat'); downAup (e.target);break
           
           
          //[0].classList.remove('hide')
          
           
-         (kaupat[0].classList.length===0) ? kaupat.forEach(e=>e.classList.add('hide')) :
-         kaupat.forEach(e=>e.classList.remove('hide')) 
+         
           
-      break
+       
       case '+/-': console.log('+/-')
       //idLisaaOsake.style.display='none'
       document.getElementById('lisaaButton').style.display="none"
@@ -290,7 +297,15 @@ idTable.addEventListener("click",taulukkoClick)
       edit(e.target.parentElement.cells[1].innerHTML)
       ;break
     }
-    
+    function downAup (e) {
+      if (kaupat[0].classList.length===0) { kaupat.forEach(e=>e.classList.add('hide'))
+       e.innerHTML=nuoliAlas
+      }
+      else {
+      kaupat.forEach(e=>e.classList.remove('hide')) 
+      e.innerHTML= nuoliYlos
+      }
+    }
     //debugger
     //console.log(e.target.innerHTML)
   }
@@ -344,6 +359,7 @@ idTable.addEventListener("click",taulukkoClick)
 
   function lisaaSalkku() {
     document.getElementById('idTable').style.display='none'
+    console.log('was here')
   }
   function transaktio(event) {
     event.preventDefault()
@@ -404,6 +420,10 @@ idTable.addEventListener("click",taulukkoClick)
   )
       console.log('pöö')
       closeAdd ()
+  }
+  function annaTdt () {
+    a=document.querySelectorAll('td')
+    a.forEach((a,b)=>console.log(a,a.innerHTML,b));debugger
   }
 
   // if (localStorage.length>0)  { 

@@ -28,9 +28,9 @@ table, th, td {
    
  }
  
- th {
+ /*th {
    height: 50px;
- }
+ }*/
  span.close {
   /* color: #ccc; */
   float: right;
