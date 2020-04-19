@@ -34,10 +34,20 @@ table, th, td {
  span.close {
   /* color: #ccc; */
   float: right;
+  font-size: larger;
   /*font-size: large;*/
   /* color: #fff; */
    
 }
+
+.tausta {
+  background-color: blue;
+  margin:auto;
+   
+
+}
 h1 {border: 1px solid black;}
 
 .hide {display: none}
+
+#idLisaaSalkku { float: right;}

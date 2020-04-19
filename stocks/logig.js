@@ -1,6 +1,7 @@
  
 
 //document.getElementById('idForm').addEventListener('submit',transaktio)
+// document.addEventListener('DOMContentLoaded', ()=>{
 document.getElementById('lisaaButton').addEventListener('click',transaktio)
 let idLista=document.getElementById('list')
 let idOsakelista=document.getElementById('osakelista')
@@ -16,7 +17,13 @@ let idOsake=document.getElementById('idOsake')
 const nuoliAlas="⇓"
 const nuoliYlos="⇑"
 document.getElementById('osta').addEventListener('click',ostaf)
-document.getElementById('idLisaaSalkku').addEventListener('click',lisaaSalkku)
+
+idLisaaSalkkuRef=document.getElementById('idLisaaSalkku')
+//idLisaaSalkku.addEventListener('click',()=>{console.log(this);idLisaaSalkku.style.display="block"})
+lisaaSalkkuFormRef=document.getElementById('idFormLisaaSalkku')
+lisaaSalkkuFormRef.addEventListener('submit',lisaaSalkkuFormAction)
+ 
+ 
 let tdChild7
 
 
@@ -103,6 +110,11 @@ for (let i=0;i<salkut.length;i++) {
 
 
 }
+salkkuLista=document.querySelector('#salkut')
+let lisaaSalkutLinkki=document.createElement('p')
+lisaaSalkutLinkki.innerHTML="Lisää salkku"
+salkkuLista.appendChild(lisaaSalkutLinkki)
+lisaaSalkutLinkki.addEventListener('click',lisaaSalkkuf)
 idTable=document.getElementById('idTable')
 idTable.addEventListener("click",taulukkoClick)
 // bodyid=document.querySelector('body')
@@ -324,6 +336,8 @@ idTable.addEventListener("click",taulukkoClick)
     idOsakelista.style.display="block"
   }
 
+
+
   function edit (osake) {
     
     document.querySelectorAll('button')[1].style.display="block"
@@ -357,9 +371,10 @@ idTable.addEventListener("click",taulukkoClick)
       paiva
   }
 
-  function lisaaSalkku() {
-    document.getElementById('idTable').style.display='none'
-    console.log('was here')
+  function lisaaSalkkuf () {
+    idOsakelista.style.display="none"
+    idLisaaSalkku.style.display="block"
+     
   }
   function transaktio(event) {
     event.preventDefault()
@@ -425,15 +440,19 @@ idTable.addEventListener("click",taulukkoClick)
     a=document.querySelectorAll('td')
     a.forEach((a,b)=>console.log(a,a.innerHTML,b));debugger
   }
+  function testi () {console.log('toimii')}
 
-  // if (localStorage.length>0)  { 
-  //   for (let oosake=0;oosake<localStorage.length-1;oosake++)
-  //    {
-  //     let helper=document.createElement(idLista,'p')
-  //     helper.innerHTML=Object.keys(localStorage[osake])
+  function lisaaSalkkuFormAction (e) {
+    console.log(e.target[0].value); 
+     
 
-  //   }
+  }
+  function idLisaaSalkkuClose() {
+    console.log('was here');
+    //debugger
+    idLisaaSalkkuRef.style.display="none"
+    idOsakelista.style.display="block"}
 
+// })
 
-  // }
    
