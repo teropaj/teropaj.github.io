@@ -5,6 +5,7 @@
 document.getElementById('lisaaButton').addEventListener('click',transaktio)
 let idLista=document.getElementById('list')
 let idOsakelista=document.getElementById('osakelista')
+idOsakelista.style.padding="2%"
 let idLisaaOsake=document.getElementById('idLisaaOsake')
 let osakeTitle=document.getElementById('osakeTitle')
 let maara=document.getElementById('maara')
@@ -50,8 +51,11 @@ for (let i=0;i<salkut.length;i++) {
   let salkku=salkut[i]
   let salkkuObject=document.createElement('p')
   //debugger
-  salkkuObject.innerHTML=Object.keys(salkut[i])[i]
-  salkkuObject.style.backgroundColor='blue'
+  salkkuObject.innerHTML=Object.keys(salkut[i])[0]
+  aktiivinenSalkku=salkut[i][salkkuObject.innerHTML]
+  salkkuObject.style.backgroundColor=(aktiivinenSalkku) ? '#666;' :'#f1f1f1'
+  salkkuObject.style.color=(aktiivinenSalkku) ? 'white;' :'#f1f1f1'
+  //salkkuObject.style.backgroundColor='blue'
   salkkuObject.style.marginRight='1em'
   salkkuObject.style.fontSize='1em'
   //debugger
@@ -443,7 +447,10 @@ idTable.addEventListener("click",taulukkoClick)
   function testi () {console.log('toimii')}
 
   function lisaaSalkkuFormAction (e) {
-    console.log(e.target[0].value); 
+    let b={}
+    b[e.target[0].value]=false
+    salkut.push(b)
+    localStorage.salkut=JSON.stringify(salkut)
      
 
   }
@@ -451,7 +458,7 @@ idTable.addEventListener("click",taulukkoClick)
     console.log('was here');
     //debugger
     idLisaaSalkkuRef.style.display="none"
-    idOsakelista.style.display="block"}
+    idOsakelista.style.display="blocklisaaSalkkuFormAction"}
 
 // })
 
