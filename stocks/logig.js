@@ -1,4 +1,38 @@
- 
+salkkuobjekti ={
+    
+    
+  //aktiivinen=0  laitetaan myöhemmin
+  kerro : function () {console.log('Aktiivinen salkku ',this.e)},
+
+  aktivoi: function (e) {
+      this.e=e
+      console.log(this.e)
+      document.getElementById('salkku'+this.aktiivinen).style.display="none"
+      salkkuNo=e.target.id
+      document.getElementById(salkkuNo).style.backgroundColor='blue'
+      document.getElementById(this.aktiivinen).style.backgroundColor='yellow'
+      this.aktiivinen=salkkuNo
+      document.getElementById('salkku'+salkkuNo).style.display='block'
+      e.target.style.backgroundColor='blue'
+      //this.aktiivinen=
+      debugger
+       
+  },
+  passivoiSalkut: function () {
+    console.log('was here')
+    let a=document.querySelectorAll('#salkut')[0].children
+    for (let i=0;i<a.length-1;i++) {
+      //a[0].children[i].style.backgroundColor="yellow"
+
+      
+      // a[i].setAttribute('style','backgroundColor="yellow"')
+      a[i].style.backgroundColor='yellow'
+    }
+  }
+
+
+
+}
 
 //document.getElementById('idForm').addEventListener('submit',transaktio)
 // document.addEventListener('DOMContentLoaded', ()=>{
@@ -50,25 +84,31 @@ dateControl.value = getDate()
 for (let i=0;i<salkut.length;i++) {
   let salkku=salkut[i]
   let salkkuObject=document.createElement('p')
+  salkkuObject.addEventListener('click',(e)=>salkkuobjekti.aktivoi(e))
   //debugger
   salkkuObject.innerHTML=Object.keys(salkut[i])[0]
   aktiivinenSalkku=salkut[i][salkkuObject.innerHTML]
-  salkkuObject.style.backgroundColor=(aktiivinenSalkku) ? '#666;' :'#f1f1f1'
+  if(aktiivinenSalkku) { salkkuObject.style.backgroundColor='green'
+    salkkuobjekti.aktiivinen=i }
+   
   salkkuObject.style.color=(aktiivinenSalkku) ? 'white;' :'#f1f1f1'
   //salkkuObject.style.backgroundColor='blue'
   salkkuObject.style.marginRight='1em'
   salkkuObject.style.fontSize='1em'
+  salkkuObject.id=i+''
   //debugger
   let width=salkku.length + 'em'
   //debugger
   salkkuObject.style.width='20%'
   salkkuObject.style.textAlign="center"
-  console.log(`${salkku.length} em`)
+  salkkuObject.setAttribute('salkkuNo',i)
   salkkuObject.onclick="aktivoiSalkku()"
   //debugger
   document.getElementById('salkut').appendChild(salkkuObject)
 
   salkkuDiv=document.createElement('div')
+  salkkuDiv.id="salkku"+i
+  
   let h1=document.createElement('h1')
   h1.innerHTML=Object.keys(salkku)
   
@@ -109,6 +149,9 @@ for (let i=0;i<salkut.length;i++) {
 
 
   salkkuDiv.appendChild(lisaaButton)
+  salkkuDiv.style.display=(aktiivinenSalkku) ? "block":"none"
+
+  if (aktivoiSalkku===true) salkkuolio.aktivoi(i)
 
   idOsakelista.appendChild(salkkuDiv)
 
