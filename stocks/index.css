@@ -56,3 +56,16 @@ h1 {border: 1px solid black;}
 
 .salkkuAktiivinen {background-color: blue;}
 
+.salkkuDiv {padding: 1%;
+           background-color: lightblue;}
+
+.salkkuH1 {border: 1px solid black}
+
+.header {margin: auto;
+background-color:rgb(0, 82, 156); 
+font-size: 1.3em;
+text-align: center;
+margin-top: 1%
+}
+
+.lisaaOsake{margin-top: 1%}

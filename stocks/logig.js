@@ -10,12 +10,12 @@ salkkuobjekti ={
       document.getElementById('salkku'+this.aktiivinen).style.display="none"
       salkkuNo=e.target.id
       document.getElementById(salkkuNo).style.backgroundColor='blue'
-      document.getElementById(this.aktiivinen).style.backgroundColor='yellow'
+      document.getElementById(this.aktiivinen).style.backgroundColor='white'
       this.aktiivinen=salkkuNo
       document.getElementById('salkku'+salkkuNo).style.display='block'
       e.target.style.backgroundColor='blue'
       //this.aktiivinen=
-      debugger
+       
        
   },
   passivoiSalkut: function () {
@@ -36,6 +36,9 @@ salkkuobjekti ={
 
 //document.getElementById('idForm').addEventListener('submit',transaktio)
 // document.addEventListener('DOMContentLoaded', ()=>{
+let idHeader=document.getElementById('idHeader')
+idHeader.classList.add('header')
+idHeader.innerHTML='Salkkupalvelu'
 document.getElementById('lisaaButton').addEventListener('click',transaktio)
 let idLista=document.getElementById('list')
 let idOsakelista=document.getElementById('osakelista')
@@ -84,6 +87,7 @@ dateControl.value = getDate()
 for (let i=0;i<salkut.length;i++) {
   let salkku=salkut[i]
   let salkkuObject=document.createElement('p')
+  salkkuObject.classList.add('salkkuH1')
   salkkuObject.addEventListener('click',(e)=>salkkuobjekti.aktivoi(e))
   //debugger
   salkkuObject.innerHTML=Object.keys(salkut[i])[0]
@@ -103,20 +107,27 @@ for (let i=0;i<salkut.length;i++) {
   salkkuObject.style.textAlign="center"
   salkkuObject.setAttribute('salkkuNo',i)
   salkkuObject.onclick="aktivoiSalkku()"
+  
   //debugger
   document.getElementById('salkut').appendChild(salkkuObject)
 
   salkkuDiv=document.createElement('div')
+  salkkuDiv.classList.add('salkkuDiv')
   salkkuDiv.id="salkku"+i
+  salkkuDiv.style.border='1px solid;'
+  //salkkuDiv.style.backgroundColor='blue'
+   
   
   let h1=document.createElement('h1')
+  h1.classList.add('salkkuH1')
   h1.innerHTML=Object.keys(salkku)
+   
   
   h1.style.textAlign='center'
   h1.style.width='12em'
-  h1.style.margin='auto'
+  h1.style.margin='1% auto'
   //h1.style.backgroundColor='green'
-  h1.style.marginBottom='0px'
+   
   //h1.style.border="1px solid black"
   h1.style.backgroundColor='green'
 
@@ -142,7 +153,9 @@ for (let i=0;i<salkut.length;i++) {
 
   salkkuDiv.appendChild(salkkuTable)
   lisaaButton=document.createElement('button')
+  lisaaButton.classList.add('lisaaOsake')
   lisaaButton.innerHTML='lisää osake'
+  lisaaButton.style.marginBottom="1%"
   lisaaButton.addEventListener('click',lisaaOsake)
 
 //<button onclick="lisaaOsake()" id="idLisaaOsake">Lisää</button>
