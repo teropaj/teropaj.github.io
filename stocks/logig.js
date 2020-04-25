@@ -52,6 +52,7 @@ let ostoaika=document.getElementById('ostoaika')
 let kurssi=document.getElementById('kurssi')
 let lisaaH1=document.getElementById('lisaaH1')
 let idOsake=document.getElementById('idOsake')
+let salkkuTableArray=[]
 const nuoliAlas="⇓"
 const nuoliYlos="⇑"
 document.getElementById('osta').addEventListener('click',ostaf)
@@ -135,6 +136,7 @@ for (let i=0;i<salkut.length;i++) {
   //debugger
 
   let salkkuTable=document.createElement('table')
+  salkkuTableArray.push(salkkuTable)
   //if (window.innerWidth>670) {
   //salkkuTable.style.width='70%'
  //}
@@ -203,13 +205,13 @@ idTable.addEventListener("click",taulukkoClick)
       let ostotTr = []
 
       idListaChild=document.createElement('tr')
-      idTable.appendChild(idListaChild) 
-      
+      //idTable.appendChild(idListaChild) 
+      salkkuTableArray[rivi[0].salkku].appendChild(idListaChild) 
       for (let i of rivi) {
         let ostoRivi=document.createElement('tr')
         ostoRivi.classList.add('hide')
         ostoRivi.setAttribute('company',helper)
-        for (let j in salkkuTht) {console.log(i)
+        for (let j in salkkuTht) {//console.log(i)
           let th=document.createElement('td')
            
           switch(Number(j)){
@@ -231,7 +233,9 @@ idTable.addEventListener("click",taulukkoClick)
           
           ostoRivi.appendChild(th)
           ostotTr.push(ostoRivi)
-          idTable.appendChild(ostoRivi)
+          //idTable.appendChild(ostoRivi)
+          console.log(i)
+          salkkuTableArray[i.salkku].appendChild(ostoRivi)
         }
 
         let maara=0
@@ -448,6 +452,7 @@ idTable.addEventListener("click",taulukkoClick)
  
           helper.ostoaika=ostoaika.value
           helper.kurssi=kurssi.value
+          helper.salkku=salkkuobjekti.aktiivinen
       osake.push(helper)
       // debugger
 
