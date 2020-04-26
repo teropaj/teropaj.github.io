@@ -136,6 +136,8 @@ for (let i=0;i<salkut.length;i++) {
   //debugger
 
   let salkkuTable=document.createElement('table')
+  salkkuTable.addEventListener("click",taulukkoClick)
+
   salkkuTableArray.push(salkkuTable)
   //if (window.innerWidth>670) {
   //salkkuTable.style.width='70%'
@@ -176,7 +178,7 @@ salkkuLista=document.querySelector('#salkut')
 let lisaaSalkutLinkki=document.createElement('p')
 lisaaSalkutLinkki.innerHTML="Lisää salkku"
 salkkuLista.appendChild(lisaaSalkutLinkki)
-lisaaSalkutLinkki.addEventListener('click',lisaaSalkkuf)
+// lisaaSalkutLinkki.addEventListener('click',lisaaSalkkuf)
 idTable=document.getElementById('idTable')
 idTable.addEventListener("click",taulukkoClick)
 // bodyid=document.querySelector('body')
@@ -490,7 +492,7 @@ idTable.addEventListener("click",taulukkoClick)
       helper.ostoaika=ostoaika.value
       //Kurssi
       helper.kurssi=kurssi.value
-    
+      helper.salkku=salkkuobjekti.aktiivinen
     //taulukko.push(helper)
     storageOsake.push(helper)
      
