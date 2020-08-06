@@ -6,25 +6,52 @@
     <title>Document</title>
 </head>
 <body>
-     <form>
+     
+     <div style="width: 40%;margin: auto;border: 1px blue;"> 
          <label for="vuosi">pääoma</label>
-         <input id="paaoma" name="paaoma" value="1000">
+         <input type="number" id="paaoma" name="paaoma" value="1000">
 
          <label for="prosentti">prosentti</label>
-         <input id="prosentti" name="prosentti" value="20">
+         <input type="number" id="prosentti" name="prosentti" value="20">
+          
 
-     </form>
+          
+         <button onclick="paivita()">laske</button>
+        
+
+      
     <p id="taulukko"></p>
+</div>
     <script>
-        txt='';
-        prosentti=1+Number(document.getElementById('prosentti').value)/100
-        paaoma=Number(document.getElementById('paaoma').value)
-        a=paaoma;
-        for(i=0;i<=55;i++){
-            a=a*prosentti
-            txt+=`vuosi ${i} omaisuus ${Math.round(a)}<br>`
+        //teeTaulukko()
+       // document.getElementById('korkoForm').addEventListener('submit', test)
+         
+        //paivita()
+        
+        function paivita() {
+            let a=teeTaulukko()
+            document.getElementById('taulukko').innerHTML=a
+             
+         }
+        function teeTaulukko() {
+                let txt=''
+                prosentti=1+Number(document.getElementById('prosentti').value)/100
+                paaoma=Number(document.getElementById('paaoma').value)
+                a=paaoma;
+                for(i=1;i<=55;i++){
+                    a=a*prosentti
+                    txt+=`vuosi ${i} omaisuus ${Math.round(a)}<br>`
+                }
+                return txt
+                 
+                 
         }
-        document.getElementById('taulukko').innerHTML=txt
+        function test(e) {
+             
+            console.log("jflsjfls")
+            //console.log(e)
+            console.log("jflsjfls")
+            }
     </script>
 </body>
 </html>
